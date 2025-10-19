@@ -12,7 +12,7 @@ body {
 header {
     display: flex;
     flex-direction: column;
-
+    width: 100%;
 }
 
 .logo>img {
@@ -24,7 +24,8 @@ header {
 .header-top {
     display: flex;
     flex-direction: row;
-    background-color: lightsalmon;
+    background-image: linear-gradient(to right, #ffffff, #2f84d3, #ffffff);
+
     align-items: center;
 }
 
@@ -36,63 +37,168 @@ header {
     margin: 0;
     padding: 0;
     text-align: left;
+    color: brown;
 }
 
 .sub-title {
     margin: 0;
     padding: 0;
     text-align: left;
+    font-style: italic;
 }
 
 .navbar {
     display: flex;
     align-items: center;
     background-color: brown;
-        justify-content: space-between;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar ul {
     list-style: none;
     display: flex;
+    flex: 1 0 0%;
     flex-direction: row;
-
+    justify-content: space-between;
+    gap: 60px;               /* thay cho padding để tạo khoảng cách giữa các mục */
+    padding: 0;              /* bỏ padding 100px */
+    margin: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
+.navbar ul li {
+    margin: 0;
+    padding: 0;
+}
 .navbar a {
     text-decoration: none;
     color: yellow;
-    padding: 10px 5px;
+    padding: 10px 15px;
     display: block;
+
 }
+/*==================dropdown menu====================*/
+/* 1. Định vị thẻ LI CHA (điểm neo) */
+
+.navbar ul li.dropdown-parent {
+    position: relative;
+    /* Đảm bảo li cha vẫn là flex item bình thường */
+    display: inline-block; 
+}
+
+/* 2. Định vị menu CON */
+/* 2. Định vị menu CON (dropdown menu) - căn giữa nút cha */
+.dropdown-content {
+    position: absolute; 
+    top: 100%;               /* đặt ngay dưới menu cha */
+    left: 100%;               /* căn giữa theo chiều ngang */
+    transform: translateX(-100%); /* dịch ngược lại 50% để nằm chính giữa */
+
+    display: none;
+    opacity: 0; 
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+
+    background-color: darkred;
+    width:max-content;
+    min-width: 100%;
+    max-width: 300px;
+    text-align: center;
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Khi hover vào menu cha thì hiển thị menu con */
+.dropdown-parent:hover .dropdown-content {
+    display: block; 
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 4. Định kiểu cho các liên kết trong menu con */
+.dropdown-content a {
+    /* Các liên kết trong menu con phải có padding đầy đủ */
+    padding: 10px 15px; 
+    color: yellow; 
+    /* Đảm bảo liên kết chiếm toàn bộ chiều rộng */
+}
+
+.dropdown-content a:hover {
+    background-color: #a00; /* Hiệu ứng hover cho menu con */
+}
+/*==================end dropdown menu====================*/
 
 /*main section*/
 main {
     display: flex;
     flex-direction: row;
     background-color: lightgray;
-    width: 100%;
+    width: 920px;
+    padding: 20px;
+
 }
 
 .right-column {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    flex: 2 0 0%;
+    flex: 4 0 0%;
+    max-width: 600px;
+    max-height: auto;
 
+}
+.right-column h2{
+    color: brown;
+}
+
+.main-info-and-image {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.main-image {
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
 }
 
 .left-column {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    flex: 1 0 0%;
+    flex: 2 0 0%;
+    max-width: 300px;
+
+}
+.left-column h2{
+    color: brown;
+}
+
+
+.image-container img {
+    width: 80%;
+    height: auto;
+
+}
+.left-column img {
+    border: 2px solid black;
 }
 
 /*footer section*/
-footer p {
-    margin: 0;
-    padding: 0;
+footer {
+    display: flex;
+    flex-direction: column;
     background-color: brown;
+    width: 100%;
+    padding: 10px 0;
+}
+footer p {
     text-align: center;
+    color: white;
 }
